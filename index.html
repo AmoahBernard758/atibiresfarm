@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atibire's Farm — Fresh from Our Fields</title>
+  <meta name="description" content="Locally grown, organically raised fresh produce straight from Atibire's Farm. Order fresh vegetables, fruits, and farm products delivered to your door." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:   '#15803D',
+            secondary: '#22C55E',
+            cta:       '#CA8A04',
+            bg:        '#F0FDF4',
+            text:      '#14532D',
+          },
+          fontFamily: {
+            heading: ['Lora', 'Georgia', 'serif'],
+            body:    ['Raleway', 'system-ui', 'sans-serif'],
+          },
+          borderRadius: {
+            '2xl': '1rem',
+            '3xl': '1.5rem',
+            '4xl': '2rem',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', system-ui, sans-serif; background-color: #F0FDF4; color: #14532D; }
+    h1, h2, h3, h4 { font-family: 'Lora', Georgia, serif; }
+    .wave-divider { display: block; width: 100%; overflow: hidden; line-height: 0; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="fixed top-4 left-4 right-4 z-50">
+    <nav class="max-w-6xl mx-auto bg-white/90 backdrop-blur-md border border-green-100 rounded-3xl px-6 py-3 flex items-center justify-between shadow-sm">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 cursor-pointer" aria-label="Atibire's Farm home">
+        <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3C6.48 3 2 7.48 2 13c0 3.31 2.69 6 6 6h8c3.31 0 6-2.69 6-6 0-5.52-4.48-10-10-10zM8 13a4 4 0 018 0" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v4M9 6l3-3 3 3" />
+          </svg>
+        </div>
+        <span class="font-heading font-semibold text-primary text-lg leading-tight">Atibire's<br><span class="text-xs font-body font-medium text-green-600 tracking-wide uppercase">Farm</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-text" role="list">
+        <li><a href="#products" class="hover:text-primary transition-colors duration-200 cursor-pointer">Products</a></li>
+        <li><a href="#about" class="hover:text-primary transition-colors duration-200 cursor-pointer">Our Farm</a></li>
+        <li><a href="#process" class="hover:text-primary transition-colors duration-200 cursor-pointer">How It Works</a></li>
+        <li><a href="#testimonials" class="hover:text-primary transition-colors duration-200 cursor-pointer">Reviews</a></li>
+        <li><a href="#contact" class="hover:text-primary transition-colors duration-200 cursor-pointer">Contact</a></li>
+      </ul>
+
+      <!-- CTA -->
+      <a href="#order" class="hidden md:inline-flex items-center gap-2 bg-cta hover:bg-yellow-600 text-white text-sm font-semibold px-5 py-2.5 rounded-2xl transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-cta focus:ring-offset-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        Order Now
+      </a>
+
+      <!-- Mobile menu button -->
+      <button id="menu-toggle" class="md:hidden p-2 rounded-xl hover:bg-green-50 transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="w-5 h-5 text-text" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 max-w-6xl mx-auto bg-white/95 backdrop-blur-md border border-green-100 rounded-3xl px-6 py-4 shadow-md">
+      <ul class="flex flex-col gap-3 text-sm font-medium text-text" role="list">
+        <li><a href="#products" class="block py-2 hover:text-primary transition-colors duration-200 cursor-pointer">Products</a></li>
+        <li><a href="#about" class="block py-2 hover:text-primary transition-colors duration-200 cursor-pointer">Our Farm</a></li>
+        <li><a href="#process" class="block py-2 hover:text-primary transition-colors duration-200 cursor-pointer">How It Works</a></li>
+        <li><a href="#testimonials" class="block py-2 hover:text-primary transition-colors duration-200 cursor-pointer">Reviews</a></li>
+        <li><a href="#contact" class="block py-2 hover:text-primary transition-colors duration-200 cursor-pointer">Contact</a></li>
+        <li><a href="#order" class="inline-flex items-center gap-2 bg-cta text-white text-sm font-semibold px-5 py-2.5 rounded-2xl transition-colors duration-200 cursor-pointer mt-1">Order Now</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden" aria-label="Hero">
+      <!-- Background blobs -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 -right-32 w-80 h-80 bg-cta/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-1/3 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Text -->
+          <div>
+            <span class="inline-flex items-center gap-2 bg-secondary/15 text-primary text-xs font-semibold px-3 py-1.5 rounded-full mb-6 tracking-wide uppercase">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              100% Organic &amp; Local
+            </span>
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-text leading-tight mb-6">
+              Fresh From the<br />
+              <span class="text-primary">Heart of</span> Our Farm
+            </h1>
+            <p class="text-green-700 text-lg leading-relaxed mb-8 max-w-lg">
+              Grown with love and care on our family farm, Atibire's delivers the freshest, most nutritious produce right to your table — harvested daily, never frozen.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#order" class="inline-flex items-center justify-center gap-2 bg-cta hover:bg-yellow-600 text-white font-semibold text-base px-7 py-3.5 rounded-2xl transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-cta focus:ring-offset-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                Shop Fresh Produce
+              </a>
+              <a href="#about" class="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold text-base px-7 py-3.5 rounded-2xl transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Visit Our Farm
+              </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="flex flex-wrap gap-8 mt-10 pt-10 border-t border-green-200">
+              <div>
+                <p class="font-heading text-3xl font-bold text-primary">15+</p>
+                <p class="text-sm text-green-700 font-medium">Years Farming</p>
+              </div>
+              <div>
+                <p class="font-heading text-3xl font-bold text-primary">200+</p>
+                <p class="text-sm text-green-700 font-medium">Happy Families</p>
+              </div>
+              <div>
+                <p class="font-heading text-3xl font-bold text-primary">50+</p>
+                <p class="text-sm text-green-700 font-medium">Crop Varieties</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Illustration card -->
+          <div class="relative">
+            <div class="relative bg-white rounded-4xl overflow-hidden shadow-xl border border-green-100 aspect-square max-w-md mx-auto">
+              <!-- Farm illustration placeholder -->
+              <div class="absolute inset-0 bg-gradient-to-br from-bg via-secondary/10 to-primary/10"></div>
+              <div class="absolute inset-0 flex flex-col items-center justify-center p-8 gap-6">
+                <!-- Large farm icon -->
+                <div class="w-28 h-28 bg-primary/10 rounded-full flex items-center justify-center">
+                  <svg class="w-16 h-16 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 64 64" aria-hidden="true">
+                    <rect x="8" y="36" width="48" height="22" rx="3" stroke-width="2"/>
+                    <path d="M8 36L32 14l24 22" stroke-width="2" stroke-linejoin="round"/>
+                    <rect x="26" y="44" width="12" height="14" rx="1" stroke-width="2"/>
+                    <path d="M44 36V26a2 2 0 012-2h2a2 2 0 012 2v10" stroke-width="2"/>
+                    <circle cx="32" cy="28" r="4" stroke-width="2"/>
+                  </svg>
+                </div>
+                <p class="font-heading text-xl font-semibold text-text text-center">Atibire's Farm</p>
+                <p class="text-green-700 text-sm text-center leading-relaxed">Growing fresh, sustainable produce since 2009</p>
+
+                <!-- Produce badges -->
+                <div class="flex flex-wrap gap-2 justify-center mt-2">
+                  <span class="bg-secondary/20 text-primary text-xs font-semibold px-3 py-1 rounded-full">Vegetables</span>
+                  <span class="bg-cta/15 text-cta text-xs font-semibold px-3 py-1 rounded-full">Fruits</span>
+                  <span class="bg-primary/15 text-primary text-xs font-semibold px-3 py-1 rounded-full">Herbs</span>
+                  <span class="bg-secondary/20 text-primary text-xs font-semibold px-3 py-1 rounded-full">Grains</span>
+                </div>
+              </div>
+              <!-- Floating delivery badge -->
+              <div class="absolute top-4 right-4 bg-white border border-green-100 rounded-2xl px-3 py-2 flex items-center gap-2 shadow-sm">
+                <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12"/></svg>
+                <span class="text-xs font-semibold text-text">Free Delivery</span>
+              </div>
+              <!-- Floating harvest badge -->
+              <div class="absolute bottom-4 left-4 bg-white border border-green-100 rounded-2xl px-3 py-2 flex items-center gap-2 shadow-sm">
+                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707"/></svg>
+                <span class="text-xs font-semibold text-text">Harvested Daily</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TRUST BAR ===================== -->
+    <div class="bg-primary py-4" role="complementary" aria-label="Trust indicators">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ul class="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-white text-sm font-medium" role="list">
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Certified Organic
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Locally Grown
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Same-Day Harvest
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            No Pesticides
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===================== PRODUCTS ===================== -->
+    <section id="products" class="py-20 px-4 sm:px-6 lg:px-8" aria-labelledby="products-heading">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-14">
+          <span class="text-secondary font-semibold text-sm uppercase tracking-widest">What We Grow</span>
+          <h2 id="products-heading" class="font-heading text-3xl sm:text-4xl font-bold text-text mt-2 mb-4">Fresh Farm Produce</h2>
+          <p class="text-green-700 max-w-xl mx-auto leading-relaxed">Every item is handpicked at peak ripeness and delivered within 24 hours of harvest.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Product card template -->
+          <!-- Vegetables -->
+          <article class="bg-white rounded-3xl overflow-hidden border border-green-100 shadow-sm hover:shadow-md hover:border-secondary/40 transition-all duration-200 cursor-pointer group" tabindex="0" aria-label="Vegetables">
+            <div class="h-40 bg-gradient-to-br from-secondary/20 to-primary/10 flex items-center justify-center">
+              <svg class="w-16 h-16 text-primary group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 64 64" aria-hidden="true">
+                <ellipse cx="32" cy="40" rx="16" ry="12"/>
+                <path d="M32 28C32 20 24 12 16 16M32 28C32 20 40 12 48 16"/>
+                <path d="M32 28v12" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-semibold text-lg text-text mb-1">Vegetables</h3>
+              <p class="text-green-700 text-sm leading-relaxed mb-4">Tomatoes, peppers, leafy greens, yam, cassava, and more — grown in nutrient-rich soil.</p>
+              <a href="#order" class="text-primary font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all duration-200 cursor-pointer">
+                Order Fresh
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Fruits -->
+          <article class="bg-white rounded-3xl overflow-hidden border border-green-100 shadow-sm hover:shadow-md hover:border-secondary/40 transition-all duration-200 cursor-pointer group" tabindex="0" aria-label="Fruits">
+            <div class="h-40 bg-gradient-to-br from-cta/10 to-yellow-100 flex items-center justify-center">
+              <svg class="w-16 h-16 text-cta group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="32" cy="38" r="16"/>
+                <path d="M32 22C32 14 38 8 44 10" stroke-linecap="round"/>
+                <path d="M32 22C28 16 20 14 18 18" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-semibold text-lg text-text mb-1">Fruits</h3>
+              <p class="text-green-700 text-sm leading-relaxed mb-4">Mangoes, bananas, pineapples, watermelons — tropical and seasonal varieties, naturally sweet.</p>
+              <a href="#order" class="text-primary font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all duration-200 cursor-pointer">
+                Order Fresh
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Herbs & Spices -->
+          <article class="bg-white rounded-3xl overflow-hidden border border-green-100 shadow-sm hover:shadow-md hover:border-secondary/40 transition-all duration-200 cursor-pointer group" tabindex="0" aria-label="Herbs and Spices">
+            <div class="h-40 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+              <svg class="w-16 h-16 text-primary group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M32 52V28" stroke-linecap="round"/>
+                <path d="M32 36C32 28 20 24 16 28" stroke-linecap="round"/>
+                <path d="M32 28C32 20 44 16 48 20" stroke-linecap="round"/>
+                <path d="M32 44C32 36 20 32 16 36" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-semibold text-lg text-text mb-1">Herbs &amp; Spices</h3>
+              <p class="text-green-700 text-sm leading-relaxed mb-4">Fresh ginger, garlic, basil, coriander — dried and fresh, full of aroma and medicinal value.</p>
+              <a href="#order" class="text-primary font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all duration-200 cursor-pointer">
+                Order Fresh
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Grains -->
+          <article class="bg-white rounded-3xl overflow-hidden border border-green-100 shadow-sm hover:shadow-md hover:border-secondary/40 transition-all duration-200 cursor-pointer group" tabindex="0" aria-label="Grains and Legumes">
+            <div class="h-40 bg-gradient-to-br from-cta/15 to-amber-50 flex items-center justify-center">
+              <svg class="w-16 h-16 text-cta group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M32 52V16" stroke-linecap="round"/>
+                <ellipse cx="24" cy="30" rx="6" ry="4" transform="rotate(-30 24 30)"/>
+                <ellipse cx="40" cy="30" rx="6" ry="4" transform="rotate(30 40 30)"/>
+                <ellipse cx="24" cy="42" rx="6" ry="4" transform="rotate(-20 24 42)"/>
+                <ellipse cx="40" cy="42" rx="6" ry="4" transform="rotate(20 40 42)"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-semibold text-lg text-text mb-1">Grains &amp; Legumes</h3>
+              <p class="text-green-700 text-sm leading-relaxed mb-4">Maize, millet, cowpeas, groundnuts — staple crops grown and processed on-farm.</p>
+              <a href="#order" class="text-primary font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all duration-200 cursor-pointer">
+                Order Fresh
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Eggs & Dairy -->
+          <article class="bg-white rounded-3xl overflow-hidden border border-green-100 shadow-sm hover:shadow-md hover:border-secondary/40 transition-all duration-200 cursor-pointer group" tabindex="0" aria-label="Eggs and Poultry">
+            <div class="h-40 bg-gradient-to-br from-secondary/15 to-green-50 flex items-center justify-center">
+              <svg class="w-16 h-16 text-secondary group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 64 64" aria-hidden="true">
+                <ellipse cx="32" cy="36" rx="12" ry="16"/>
+                <ellipse cx="20" cy="30" rx="8" ry="10"/>
+                <ellipse cx="44" cy="30" rx="8" ry="10"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-semibold text-lg text-text mb-1">Eggs &amp; Poultry</h3>
+              <p class="text-green-700 text-sm leading-relaxed mb-4">Free-range eggs and farm-raised poultry — no growth hormones, just natural goodness.</p>
+              <a href="#order" class="text-primary font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all duration-200 cursor-pointer">
+                Order Fresh
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Farm Boxes -->
+          <article class="bg-primary rounded-3xl overflow-hidden border border-primary shadow-sm hover:shadow-md hover:bg-green-800 transition-all duration-200 cursor-pointer group" tabindex="0" aria-label="Weekly Farm Box">
+            <div class="h-40 bg-white/10 flex items-center justify-center">
+              <svg class="w-16 h-16 text-white group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 64 64" aria-hidden="true">
+                <rect x="10" y="28" width="44" height="28" rx="4"/>
+                <path d="M10 28l6-14h32l6 14" stroke-linejoin="round"/>
+                <path d="M24 28v4a8 8 0 0016 0v-4"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <span class="inline-block bg-cta text-white text-xs font-bold px-2.5 py-0.5 rounded-full mb-2">Popular</span>
+              <h3 class="font-heading font-semibold text-lg text-white mb-1">Weekly Farm Box</h3>
+              <p class="text-green-200 text-sm leading-relaxed mb-4">Curated weekly box of seasonal produce — surprise variety, always fresh, delivered to you.</p>
+              <a href="#order" class="text-white font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all duration-200 cursor-pointer">
+                Subscribe Now
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-white" aria-labelledby="about-heading">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+          <!-- Visual side -->
+          <div class="relative">
+            <div class="bg-bg rounded-4xl p-8 border border-green-100">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-secondary/20 rounded-3xl p-6 flex flex-col items-center text-center">
+                  <svg class="w-10 h-10 text-primary mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <p class="font-heading font-bold text-2xl text-text">50+</p>
+                  <p class="text-sm text-green-700">Crop Varieties</p>
+                </div>
+                <div class="bg-cta/10 rounded-3xl p-6 flex flex-col items-center text-center">
+                  <svg class="w-10 h-10 text-cta mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  <p class="font-heading font-bold text-2xl text-text">200+</p>
+                  <p class="text-sm text-green-700">Families Served</p>
+                </div>
+                <div class="bg-primary/10 rounded-3xl p-6 flex flex-col items-center text-center">
+                  <svg class="w-10 h-10 text-primary mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  <p class="font-heading font-bold text-2xl text-text">15+</p>
+                  <p class="text-sm text-green-700">Years Experience</p>
+                </div>
+                <div class="bg-secondary/15 rounded-3xl p-6 flex flex-col items-center text-center">
+                  <svg class="w-10 h-10 text-secondary mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                  <p class="font-heading font-bold text-2xl text-text">100%</p>
+                  <p class="text-sm text-green-700">Organic Certified</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text side -->
+          <div>
+            <span class="text-secondary font-semibold text-sm uppercase tracking-widest">Our Story</span>
+            <h2 id="about-heading" class="font-heading text-3xl sm:text-4xl font-bold text-text mt-2 mb-6">A Family Farm Built on Tradition &amp; Care</h2>
+            <p class="text-green-700 leading-relaxed mb-4">
+              Atibire's Farm began over 15 years ago as a small family plot, driven by a simple belief: that good food starts with healthy soil and dedicated hands. Today, we tend dozens of acres using sustainable, organic methods passed down through generations.
+            </p>
+            <p class="text-green-700 leading-relaxed mb-6">
+              We never use synthetic pesticides or artificial fertilizers. Every crop is grown the way nature intended — slowly, carefully, and with deep respect for the land and the people who eat from it.
+            </p>
+            <ul class="space-y-3 mb-8" role="list">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="text-green-800 text-sm">No synthetic chemicals — ever</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="text-green-800 text-sm">Soil health maintained through composting &amp; crop rotation</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="text-green-800 text-sm">Water-efficient irrigation systems throughout</span>
+              </li>
+            </ul>
+            <a href="#contact" class="inline-flex items-center gap-2 bg-primary hover:bg-green-800 text-white font-semibold px-6 py-3 rounded-2xl transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              Plan a Farm Visit
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW IT WORKS ===================== -->
+    <section id="process" class="py-20 px-4 sm:px-6 lg:px-8" aria-labelledby="process-heading">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-14">
+          <span class="text-secondary font-semibold text-sm uppercase tracking-widest">Simple &amp; Easy</span>
+          <h2 id="process-heading" class="font-heading text-3xl sm:text-4xl font-bold text-text mt-2 mb-4">From Farm to Your Table</h2>
+          <p class="text-green-700 max-w-xl mx-auto leading-relaxed">Ordering fresh farm produce has never been easier. Just three steps to delicious, healthy food.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-8 relative">
+          <!-- Connector line (desktop only) -->
+          <div class="hidden sm:block absolute top-12 left-1/6 right-1/6 h-0.5 bg-green-200 z-0" aria-hidden="true"></div>
+
+          <div class="relative z-10 flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-primary rounded-full flex items-center justify-center mb-6 shadow-lg shadow-primary/25">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+            </div>
+            <span class="bg-primary text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mx-auto -mt-2 mb-4" aria-hidden="true">1</span>
+            <h3 class="font-heading font-semibold text-lg text-text mb-2">Choose Your Produce</h3>
+            <p class="text-green-700 text-sm leading-relaxed">Browse our seasonal catalogue and pick what you need — individual items or our curated weekly box.</p>
+          </div>
+
+          <div class="relative z-10 flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-cta rounded-full flex items-center justify-center mb-6 shadow-lg shadow-cta/25">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707"/></svg>
+            </div>
+            <span class="bg-cta text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mx-auto -mt-2 mb-4" aria-hidden="true">2</span>
+            <h3 class="font-heading font-semibold text-lg text-text mb-2">We Harvest to Order</h3>
+            <p class="text-green-700 text-sm leading-relaxed">Your order triggers a fresh harvest. We pick only what's needed, when it's needed, at peak ripeness.</p>
+          </div>
+
+          <div class="relative z-10 flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-secondary rounded-full flex items-center justify-center mb-6 shadow-lg shadow-secondary/25">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12"/></svg>
+            </div>
+            <span class="bg-secondary text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mx-auto -mt-2 mb-4" aria-hidden="true">3</span>
+            <h3 class="font-heading font-semibold text-lg text-text mb-2">Delivered to Your Door</h3>
+            <p class="text-green-700 text-sm leading-relaxed">Packed carefully in eco-friendly packaging and delivered fresh — same day or next morning.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS ===================== -->
+    <section id="testimonials" class="py-20 px-4 sm:px-6 lg:px-8 bg-white" aria-labelledby="testimonials-heading">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-14">
+          <span class="text-secondary font-semibold text-sm uppercase tracking-widest">What People Say</span>
+          <h2 id="testimonials-heading" class="font-heading text-3xl sm:text-4xl font-bold text-text mt-2 mb-4">Loved by Local Families</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <blockquote class="bg-bg rounded-3xl p-6 border border-green-100">
+            <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-green-800 text-sm leading-relaxed mb-4">"The vegetables from Atibire's Farm taste completely different from the market. You can actually taste the freshness. My kids now ask for salad!"</p>
+            <footer class="flex items-center gap-3">
+              <div class="w-9 h-9 bg-primary rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                <span class="text-white text-xs font-bold">AK</span>
+              </div>
+              <div>
+                <p class="font-semibold text-text text-sm">Ama Kusi</p>
+                <p class="text-green-600 text-xs">Customer since 2021</p>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="bg-bg rounded-3xl p-6 border border-green-100">
+            <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-green-800 text-sm leading-relaxed mb-4">"We've been ordering the weekly box for 8 months now. Every delivery is a surprise and everything is always incredibly fresh. Best decision we made!"</p>
+            <footer class="flex items-center gap-3">
+              <div class="w-9 h-9 bg-cta rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                <span class="text-white text-xs font-bold">KO</span>
+              </div>
+              <div>
+                <p class="font-semibold text-text text-sm">Kwame Osei</p>
+                <p class="text-green-600 text-xs">Weekly Box Subscriber</p>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="bg-bg rounded-3xl p-6 border border-green-100">
+            <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-cta" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-green-800 text-sm leading-relaxed mb-4">"I run a small restaurant and Atibire's Farm is my only supplier for produce. The quality is consistent and the free delivery saves me time and money."</p>
+            <footer class="flex items-center gap-3">
+              <div class="w-9 h-9 bg-secondary rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                <span class="text-white text-xs font-bold">AB</span>
+              </div>
+              <div>
+                <p class="font-semibold text-text text-sm">Abena Boateng</p>
+                <p class="text-green-600 text-xs">Restaurant Owner</p>
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ORDER / CTA ===================== -->
+    <section id="order" class="py-20 px-4 sm:px-6 lg:px-8" aria-labelledby="order-heading">
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-primary rounded-4xl p-8 md:p-12 text-center relative overflow-hidden">
+          <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div class="absolute -top-12 -right-12 w-48 h-48 bg-secondary/20 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-cta/20 rounded-full blur-2xl"></div>
+          </div>
+          <div class="relative">
+            <span class="inline-block bg-white/10 text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-6 tracking-wide uppercase">Place Your Order</span>
+            <h2 id="order-heading" class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">Ready for Fresh Farm Produce?</h2>
+            <p class="text-green-200 leading-relaxed mb-8">Contact us to place your order, ask about availability, or set up a weekly delivery subscription. We'll get back to you same day.</p>
+            <a href="#contact" class="inline-flex items-center gap-2 bg-cta hover:bg-yellow-500 text-white font-semibold px-8 py-4 rounded-2xl transition-colors duration-200 cursor-pointer text-lg focus:outline-none focus:ring-2 focus:ring-cta focus:ring-offset-2 focus:ring-offset-primary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              Contact Us Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-white" aria-labelledby="contact-heading">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-14">
+          <!-- Info -->
+          <div>
+            <span class="text-secondary font-semibold text-sm uppercase tracking-widest">Get in Touch</span>
+            <h2 id="contact-heading" class="font-heading text-3xl sm:text-4xl font-bold text-text mt-2 mb-6">We'd Love to Hear from You</h2>
+            <p class="text-green-700 leading-relaxed mb-8">Whether you want to place an order, ask about our products, or arrange a farm visit — we're here for you.</p>
+
+            <ul class="space-y-5" role="list">
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-text text-sm">Farm Location</p>
+                  <p class="text-green-700 text-sm">Atibire's Farm, Ghana<br>Available for visits by appointment</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-text text-sm">Phone / WhatsApp</p>
+                  <a href="tel:+233000000000" class="text-primary text-sm hover:underline cursor-pointer">+233 000 000 000</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-text text-sm">Email</p>
+                  <a href="mailto:hello@atibiresfarm.com" class="text-primary text-sm hover:underline cursor-pointer">hello@atibiresfarm.com</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-text text-sm">Farm Hours</p>
+                  <p class="text-green-700 text-sm">Mon–Sat: 6am – 6pm<br>Sunday: By appointment</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="bg-bg rounded-3xl p-8 border border-green-100">
+            <h3 class="font-heading font-semibold text-xl text-text mb-6">Send a Message</h3>
+            <form action="#" method="POST" novalidate>
+              <div class="space-y-4">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-text mb-1.5">Full Name <span aria-hidden="true" class="text-red-500">*</span></label>
+                  <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your full name"
+                    class="w-full border border-green-200 rounded-2xl px-4 py-3 text-sm text-text bg-white placeholder-green-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200" />
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-medium text-text mb-1.5">Phone / WhatsApp</label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+233 000 000 000"
+                    class="w-full border border-green-200 rounded-2xl px-4 py-3 text-sm text-text bg-white placeholder-green-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200" />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-text mb-1.5">Email Address</label>
+                  <input type="email" id="email" name="email" autocomplete="email" placeholder="your@email.com"
+                    class="w-full border border-green-200 rounded-2xl px-4 py-3 text-sm text-text bg-white placeholder-green-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200" />
+                </div>
+                <div>
+                  <label for="interest" class="block text-sm font-medium text-text mb-1.5">I'm interested in</label>
+                  <select id="interest" name="interest"
+                    class="w-full border border-green-200 rounded-2xl px-4 py-3 text-sm text-text bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200 cursor-pointer">
+                    <option value="">Select an option</option>
+                    <option value="vegetables">Vegetables</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="herbs">Herbs &amp; Spices</option>
+                    <option value="grains">Grains &amp; Legumes</option>
+                    <option value="poultry">Eggs &amp; Poultry</option>
+                    <option value="box">Weekly Farm Box</option>
+                    <option value="visit">Farm Visit</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="message" class="block text-sm font-medium text-text mb-1.5">Message <span aria-hidden="true" class="text-red-500">*</span></label>
+                  <textarea id="message" name="message" required rows="4" placeholder="Tell us what you need..."
+                    class="w-full border border-green-200 rounded-2xl px-4 py-3 text-sm text-text bg-white placeholder-green-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200 resize-none"></textarea>
+                </div>
+                <button type="submit"
+                  class="w-full bg-primary hover:bg-green-800 text-white font-semibold py-3.5 rounded-2xl transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 flex items-center justify-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-text py-10 px-4 sm:px-6 lg:px-8" role="contentinfo">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3C6.48 3 2 7.48 2 13c0 3.31 2.69 6 6 6h8c3.31 0 6-2.69 6-6 0-5.52-4.48-10-10-10zM8 13a4 4 0 018 0" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v4M9 6l3-3 3 3" />
+            </svg>
+          </div>
+          <span class="font-heading font-semibold text-white">Atibire's Farm</span>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul class="flex flex-wrap justify-center gap-6 text-sm text-green-300" role="list">
+            <li><a href="#products" class="hover:text-white transition-colors duration-200 cursor-pointer">Products</a></li>
+            <li><a href="#about" class="hover:text-white transition-colors duration-200 cursor-pointer">Our Farm</a></li>
+            <li><a href="#process" class="hover:text-white transition-colors duration-200 cursor-pointer">How It Works</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors duration-200 cursor-pointer">Contact</a></li>
+          </ul>
+        </nav>
+        <p class="text-green-400 text-sm">&copy; 2026 Atibire's Farm. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('hidden');
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Close mobile menu on nav link click
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
