@@ -1,0 +1,188 @@
+/* ============================================================
+   Amingo Design & Photography — custom styles
+   (Tailwind handles layout/utilities; this file covers the
+   things Tailwind can't: animations, glass, masonry, cursors)
+   ============================================================ */
+
+:root {
+  --gold: #D4AF37;
+  --gold-light: #E9CE72;
+  --black: #0A0A0A;
+  --charcoal: #161616;
+  --charcoal-2: #1F1F1F;
+  --ivory: #F6F3EC;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+  background-color: var(--black);
+  color: var(--ivory);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 999px; }
+
+::selection { background: var(--gold); color: #0A0A0A; }
+
+/* ---------- Light mode ---------- */
+html.light body { background-color: var(--ivory); color: #1a1a1a; }
+html.light .surface { background-color: #ffffff; }
+html.light .surface-charcoal { background-color: #efe9db; }
+html.light .text-invert { color: #1a1a1a; }
+html.light .border-soft { border-color: rgba(0,0,0,0.08); }
+
+/* ---------- Glassmorphism ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+}
+html.light .glass {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* ---------- Gold gradient text ---------- */
+.text-gold-gradient {
+  background: linear-gradient(100deg, #B8892E 0%, #E9CE72 35%, #D4AF37 60%, #8A6A24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Nav ---------- */
+#navbar { transition: padding 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease; }
+#navbar.scrolled { padding-top: 0.5rem; padding-bottom: 0.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+.nav-link { position: relative; }
+.nav-link::after {
+  content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 1px;
+  background: var(--gold); transition: width 0.3s ease;
+}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link.active { color: var(--gold); }
+
+/* ---------- Scroll reveal ---------- */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.reveal-visible { opacity: 1; transform: translateY(0); }
+.reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-scale.reveal-visible { opacity: 1; transform: scale(1); }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-left.reveal-visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-right.reveal-visible { opacity: 1; transform: translateX(0); }
+
+/* ---------- Floating cards (hero) ---------- */
+.float-card { animation: floatY 6s ease-in-out infinite; will-change: transform; }
+.float-card.delay-1 { animation-delay: 0.8s; }
+.float-card.delay-2 { animation-delay: 1.6s; }
+.float-card.delay-3 { animation-delay: 2.4s; }
+@keyframes floatY {
+  0%, 100% { transform: translateY(0) rotate(var(--tilt, -3deg)); }
+  50% { transform: translateY(-16px) rotate(var(--tilt, -3deg)); }
+}
+
+/* ---------- Animated gradient blobs ---------- */
+.blob {
+  position: absolute; border-radius: 9999px; filter: blur(70px);
+  animation: blobMove 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes blobMove {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(40px, -30px) scale(1.15); }
+  100% { transform: translate(-30px, 20px) scale(0.95); }
+}
+
+/* ---------- Particles ---------- */
+.particle {
+  position: absolute; border-radius: 50%; background: var(--gold);
+  opacity: 0.35; animation: particleUp linear infinite;
+}
+@keyframes particleUp {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 0.5; }
+  100% { transform: translateY(-120vh) translateX(20px); opacity: 0; }
+}
+
+/* ---------- Scroll progress bar ---------- */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, #8A6A24, var(--gold), #E9CE72);
+  z-index: 60; transition: width 0.1s linear;
+}
+
+/* ---------- Cards: lift / glow / shine ---------- */
+.tilt-card { transition: transform 0.45s cubic-bezier(.2,.8,.2,1), box-shadow 0.45s ease; }
+.tilt-card:hover {
+  transform: translateY(-10px) rotate(-1deg) scale(1.015);
+  box-shadow: 0 30px 60px -20px rgba(212,175,55,0.35);
+}
+.shine-card { position: relative; overflow: hidden; }
+.shine-card::before {
+  content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255,255,255,0.28), transparent);
+  transform: skewX(-20deg); transition: left 0.7s ease;
+}
+.shine-card:hover::before { left: 130%; }
+
+/* ---------- Masonry ---------- */
+.masonry { column-count: 1; column-gap: 1.25rem; }
+@media (min-width: 640px)  { .masonry { column-count: 2; } }
+@media (min-width: 1024px) { .masonry { column-count: 3; } }
+.masonry-item { break-inside: avoid; margin-bottom: 1.25rem; }
+
+/* ---------- Gallery image hover ---------- */
+.gallery-frame { overflow: hidden; cursor: zoom-in; }
+.gallery-frame img, .gallery-frame .ph-img { transition: transform 0.6s ease, filter 0.6s ease; }
+.gallery-frame:hover img, .gallery-frame:hover .ph-img { transform: scale(1.08) rotate(0.5deg); }
+
+/* ---------- Lightbox ---------- */
+#lightbox { position: fixed; inset: 0; z-index: 70; display: none; }
+#lightbox.open { display: flex; }
+
+/* ---------- Before / after slider ---------- */
+.ba-wrap { position: relative; overflow: hidden; cursor: ew-resize; user-select: none; }
+.ba-after { position: absolute; inset: 0; overflow: hidden; }
+.ba-handle {
+  position: absolute; top: 0; bottom: 0; width: 3px; background: var(--gold);
+  left: 50%; transform: translateX(-50%); box-shadow: 0 0 12px rgba(212,175,55,0.7);
+}
+.ba-handle::after {
+  content: '\2194'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 40px; height: 40px; border-radius: 50%; background: var(--gold); color: #0A0A0A;
+  display: flex; align-items: center; justify-content: center; font-weight: 700;
+}
+
+/* ---------- Skill bars ---------- */
+.skill-bar-fill { width: 0%; transition: width 1.4s cubic-bezier(.2,.8,.2,1); }
+
+/* ---------- Toast ---------- */
+#toast { transition: transform 0.4s ease, opacity 0.4s ease; }
+
+/* ---------- Back to top ---------- */
+#back-to-top { transition: opacity 0.3s ease, transform 0.3s ease; }
+
+/* ---------- Time slot buttons ---------- */
+.slot-btn.selected { background: var(--gold); color: #0A0A0A; border-color: var(--gold); }
+
+/* ---------- Modal ---------- */
+.modal-overlay { transition: opacity 0.3s ease; }
+.modal-panel { transition: transform 0.35s cubic-bezier(.2,.8,.2,1), opacity 0.35s ease; }
